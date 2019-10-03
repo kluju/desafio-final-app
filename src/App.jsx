@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Button,Container } from 'reactstrap';
+import { Container } from 'reactstrap';
 import PrivateRoute from './components/private-route/PrivateRoute';
 
 import store from './store';

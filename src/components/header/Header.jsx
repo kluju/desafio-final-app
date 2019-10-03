@@ -1,9 +1,9 @@
-import React, { useState,useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import { logoutActionCreator } from '../../store/modules/auth/login.actions';
 import { FaPowerOff,FaRegUser,FaHome,FaList } from 'react-icons/fa';
-
+import { Button} from 'reactstrap';
 import {
   NavbarBrand,
   NavLink,} from 'reactstrap'; 
@@ -11,13 +11,10 @@ import {
 const Header = (props) => {
     
     const dispatch = useDispatch();
-    const [isOpen, setIsOpen ] = useState(false);
-    const [path, setPath ] = useState(props.location.pathname.toString() === "/login".toString());
+    
     useEffect(() => {
-    }, [path]);
-    const toggle = () => {
-        setIsOpen(!isOpen);
-    }
+    }, []);
+    
     const isLogin = () => {
       const jwt = localStorage.getItem('jwt'); 
       const result = !!jwt;
@@ -49,10 +46,10 @@ const Header = (props) => {
               
               {isLogin()  ?  
                 (
-                  <a onClick={logout} className="btn btn-sm btn-outline-secondary" ><FaPowerOff/> Sesión</a>
+                  <Button className="btn btn-light  btn-outline-secondary"  onClick={logout}><FaPowerOff /> Sesión</Button>
                 ) : 
                 (
-                  <NavLink tag={RRNavLink} className="btn btn-sm  btn-outline-secondary" exact to="/login" activeClassName="active"><FaRegUser/>Sesión</NavLink>
+                  <NavLink tag={RRNavLink} className="btn btn-light  btn-outline-secondary" exact to="/login" activeClassName="active"><FaRegUser/>Sesión</NavLink>
                 )
               }
               

@@ -8,7 +8,7 @@ import ModalLoading from '../../components/loading/ModalLoading';
 const Login = (props) => {
     const dispatch = useDispatch();
     const jwt = useSelector(store => store.auth.login.data);
-    const { error, success, errorMessage, loading } = useSelector((store) => store.auth.login);
+    const { error,  errorMessage, loading } = useSelector((store) => store.auth.login);
     const email = useInput('', 'email');
     const password = useInput('', 'password');
     const buttonIsDisabled = () => password.value === '' || email.value === '';
@@ -16,7 +16,7 @@ const Login = (props) => {
         if (jwt !== null && jwt !== undefined) {
             props.history.push('dashboard/users')
         }
-    }, [jwt])
+    }, [jwt,props])
 
     return (
         <Container className="mt-4">
@@ -38,9 +38,9 @@ const Login = (props) => {
                                     <Input {...password} />
                                 </FormGroup>
 
-                                {loading  ?  (<Spinner size="sm" type="grow" animation="border" role="status">
-                                    <span className="sr-only">Loading...</span>
-                                </Spinner>): <Button
+                                {loading  ?  (<Spinner size="sm" type="grow" animation="border" role="status"></Spinner>)
+                                : 
+                                <Button
                                     disabled={buttonIsDisabled()}
                                     onClick={() => dispatch(loginAction(email.value, password.value))}
                                 >Iniciar</Button>}

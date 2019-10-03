@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link,NavLink as RRNavLink } from 'react-router-dom';
-import { Button, Alert, Table, Card, CardHeader, Modal, ModalHeader, ModalBody, ModalFooter,  CardBody, Container, Row, Col,Spinner ,NavLink} from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { Button, Alert, Table, Card, CardHeader, Modal, ModalHeader, ModalBody, ModalFooter,  CardBody, Container, Row, Col,Spinner ,} from 'reactstrap';
 import { getAllActionsAsyncCreator as getAll } from '../../store/modules/user/get-all.actions';
 import { deleteActionsAsyncCreator } from '../../store/modules/user/delete.actions';
-import { FaArrowLeft,FaTrashAlt,FaRegEye,FaRegUser } from 'react-icons/fa';
+import { FaTrashAlt,FaRegEye,FaRegUser } from 'react-icons/fa';
 import ModalLoading from '../../components/loading/ModalLoading';
 
 const UserList = (props) => {
     const dispatch = useDispatch();
-    const { data, error, success, errorMessage, loading } = useSelector((store) => store.user.getAll);
+    const { data, error,  errorMessage, loading } = useSelector((store) => store.user.getAll);
 
     const [userDelete, setUserDelete] = useState(null);
 
     useEffect(() => {
         dispatch(getAll())
-    }, []);
+    }, [dispatch]);
 
     const handlerDelete = () => {
         const id = userDelete.id;
@@ -37,9 +37,9 @@ const UserList = (props) => {
                             </CardHeader>
                             <CardBody>
                                 
-                            {loading  ?  (<Spinner size="sm"  animation="border" role="status">
-                                    <span className="sr-only">Loading...</span>
-                                </Spinner>) : 
+                            {loading  ?  
+                                (<Spinner size="sm"  animation="border" role="status"></Spinner>) 
+                                : 
                                 (<Table>
                                     <thead>
                                         <tr>
