@@ -1,3 +1,12 @@
+Usuario De coneccion es 
+  admin : admin1234
+
+Modifique un poco la api-mock V1 (Que es la que pude instalar)  para la validacion del usuario
+
+las Dependencias intaladas son :
+  npm install --save redux react-redux bootstrap reactstrap react-router-dom redux-thunk redux-logger axios
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
